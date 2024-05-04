@@ -185,6 +185,82 @@ int main(int argc, char *argv[])
 			case 31:
 			{
 				puts("room31");
+				        srand(time(NULL));
+        //INFINITE HALLWAY
+        puts("\nROOM 31 SELECTED\n");
+        //alz is user input
+        int alz = 0;
+        //alx is fatigue counter
+        int alx = 0;
+        //aly is condition of closet door
+        int aly = 0;
+        //alr is the choice for searching the room
+        int alr = rand() % 5 + 1;
+        //alc is the condition of the crowbar
+        int alc = 0;
+        puts("NOTICE: Beyond this point, please use the Enter key to continue the story.");
+        while (getchar() != '\n');
+        printf("\nYour eyes lock onto the door marked with the number 31 as water continues to flood the room around you, your hands grasp the cold and ominous knob. You turn the handle and yank the door open.\n");
+        while (getchar() != '\n');
+        printf("On the other side of the door a blinding bright flash of light hits your eyes and without thinking you brazenly step through the door realize you are in a closet.\n");
+        while (getchar() != '\n');
+        printf("You give a quick look around the room and realize the door behind you is now gone, it seems you can only go forward.\n");
+        while (getchar() != '\n');
+        printf("Your heart pulses as you realize you might be in more danger than the last room...\n");
+        while (getchar() != '\n');
+        printf("Enter a number to make a choice: \n1: Conquer your fear, kick open the door! \n2: Gently open the door and peek into the next room.\n3: Observe the closet closely.\n");
+        scanf("%d", &alz);
+        while (alz < 1 || alz > 3) {
+            printf("You decide to stare vacantly at the door, several moments pass and you realize you only have a few options. \n");
+            while(getchar() != '\n');
+          printf("1: Conquer your fear, kick open the door! \n2: Gently open the door and peek into the next room.\n3: Observe the closet closely.\n");
+            scanf("%d", &alz);
+        }
+        printf("\n");
+        while (getchar() != '\n');
+        switch(alz) {
+            case 1:
+                printf("You violently kick the door open, it breaks the latch on the door, making it now impossible to close, you walk into the hallway and have a look around.\n");
+                alx += 2;
+                aly += 1;
+                while (getchar() != '\n');
+                break;
+            case 2:
+                printf("You slowly peek through the door, and realize it's a hallway, you decide to have a look around...\n");
+                alx += 1;
+                while (getchar() != '\n');
+                break;
+            case 3:
+                printf("You decide to closely observe the closet and search meticulously...");
+              alx += 3;
+                if (alr == 1) {
+                  printf(" unfortunately you find nothing. The closet is filled with trash, you decided you had enough and kick open the door into the hallway and have a look around.\n");
+                aly += 1;
+              } else if (alr == 2) {
+                  printf(" you find only a granola bar, you are hungry so you decide to eat it. After having a snack, you decided you had enough and kick open the door into the hallway and have a look around...\n");
+                alx -= 3;
+                aly += 1;
+              } else if (alr == 3) {
+                  printf(" you find only a granola bar, you are hungry so you decide to eat it. After having a snack, you decided you had enough and slowly peek through the door, and realize it's a hallway, you decide to have a look around...\n");
+                alx -= 3;
+              } else if (alr == 4) {
+                  printf(" you find a sturdy and practical looking crowbar. You decide to take it with you, after looking further through the closet, you find nothing else and decided you had enough and kick open the door into the hallway and have a look around... \n");
+                aly += 1;
+                alc += 1;
+              } else if (alr == 5) {
+                  printf(" you find a sturdy and practical looking crowbar. You decide to take it with you, after looking further through the closet, you find nothing else and you decided you had enough and slowly peek through the door, and realize it's a hallway, you decide to have a look around... \n");
+              }
+                alc += 1;
+                while (getchar() != '\n');
+                break;
+            default:
+                printf("You manage to warp pass the door... this is impossible, but you did it!\n");
+                break;
+        }
+        printf("You realize you are in a hospital hallway that seems to go either left or right, they seem to go on forever. What do you do? \n");
+        while (getchar() != '\n');
+        printf("\n");
+        while (getchar() != '\n');
 				break;
 			}
 			case 32:
