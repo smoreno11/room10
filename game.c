@@ -315,9 +315,9 @@ int main(int argc, char *argv[])
             scanf("%d", &alz);
         }
         alr = 0;
-          switch(alz) 
-          {
+          switch(alz)
             case 1:
+            {
               while (getchar() != '\n');
                 while ((alr != 1 && alr != 10) || alt != 7)
                 {
@@ -373,10 +373,10 @@ int main(int argc, char *argv[])
                         alt++;
                         while (getchar() != '\n');
                         }
-                        if (alr == 1 || alr == 10 || alt == 7) 
-                        {
-                        break;
-                        } 
+                        //if (alr == 1 || alr == 10 || alt == 7) 
+                        //{
+                        //break;
+                        //} 
                   
                   }
                   if (alt == 7) 
@@ -403,6 +403,7 @@ int main(int argc, char *argv[])
                     printf("Ending 10 \n");
                     while (getchar() != '\n');
                     break;
+                  }
                   }
                   break;
                   case 2:
