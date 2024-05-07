@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     int health = 5;
 
 	srand(time(NULL));
-	
+
 	printf("Please enter your name: ");
 	scanf("%s",name);
 
@@ -103,7 +103,7 @@ int main(int argc, char *argv[])
                 if(!survived)
                 {
                     puts("You Died.");
-                    // return EXIT_SUCCESS;
+                    return EXIT_SUCCESS;
 
                 }
                 else
@@ -131,17 +131,39 @@ int main(int argc, char *argv[])
 			}
 			case 8:
 			{
-				puts("You enter room 8");
+                puts("You enter room 5");
                 health--;
-				puts("");
+
+                bool survived = trap_d10();
+                if(!survived)
+                {
+                    puts("You Died.");
+                    return EXIT_SUCCESS;
+
+                }
+                else
+                {
+                    puts("You survived the trap");
+                }
 
                 break;
 			}
 			case 9:
 			{
-				puts("You enter room 9");
+                puts("You enter room 5");
                 health--;
-				puts("");
+
+                bool survived = trap_d10();
+                if(!survived)
+                {
+                    puts("You Died.");
+                    return EXIT_SUCCESS;
+
+                }
+                else
+                {
+                    puts("You survived the trap");
+                }
 
                 break;
 			}
@@ -171,9 +193,20 @@ int main(int argc, char *argv[])
 			}
 			case 13:
 			{
-				puts("You enter room 13");
+                puts("You enter room 5");
                 health--;
-				puts("");
+
+                bool survived = trap_d10();
+                if(!survived)
+                {
+                    puts("You Died.");
+                    return EXIT_SUCCESS;
+
+                }
+                else
+                {
+                    puts("You survived the trap");
+                }
 
                 break;
 			}
@@ -234,16 +267,8 @@ bool trap_d10()
         };
 
     printf("%s \n", traps[roll]);
-    int d2 = rand() % 2+1;
-
-    if(d2 == 0)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    bool d2 = rand() % 2;
+    return d2;
 }
 
 
