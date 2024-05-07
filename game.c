@@ -156,7 +156,7 @@ int main(int argc, char *argv[])
 			{
 				puts("You enter room 7");
                 health--;
-				puts("");
+				puts("You find a room full of skeletons and a diamond necklace.");
 
                 break;
 			}
