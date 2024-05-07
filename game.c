@@ -90,9 +90,23 @@ int main(int argc, char *argv[])
 			{
 				puts("You enter room 4");
                 health--;
-				puts("");
+				puts("You enter the room and you see a painting.");
+                puts("Do you inspect it? (0=yes, 1=no) ");
 
-				break;
+                scanf("%d",&choice);
+                if(choice == 0)
+                {
+                    puts("This is an enchanted painting casts a paralyzing gaze on anyone who looks at it.");
+                    puts("You are now paralyzed.");
+                    return EXIT_SUCCESS;
+                }
+
+                else
+                {
+                    puts("You leave the room.");
+                }
+
+                break;
 			}
 			case 5:
 			{
@@ -117,7 +131,24 @@ int main(int argc, char *argv[])
 			{
 				puts("You enter room 6");
                 health--;
-				puts("");
+				puts("You enter a room filled with sand and five ancient ruins on the walls.");
+                puts("The door closes behind you and the room fills with quicksand. The runes start to glow.");
+
+                for (int i = 0; i < 4; i++)
+                {
+                    puts("Which rune do you touch? (1-5)");
+                    scanf("%d",&choice);
+                    if(choice == 4)
+                    {
+                        puts("The sand empties the room and the door opens. You leave the room.");
+                        break;
+                    }
+
+                    else
+                    {
+                        puts("That did nothing.");
+                    }
+                }
 
                 break;
 			}
@@ -167,59 +198,7 @@ int main(int argc, char *argv[])
 
                 break;
 			}
-			case 10:
-			{
-				puts("You enter room10");
-                health--;
-				puts("");
-
-                break;
-			}
-			case 11:
-			{
-				puts("You enter room 11");
-                health--;
-				puts("");
-
-                break;
-			}
-			case 12:
-			{
-				puts("You enter room 12");
-                health--;
-				puts("");
-
-                break;
-			}
-			case 13:
-			{
-                puts("You enter room 5");
-                health--;
-
-                bool survived = trap_d10();
-                if(!survived)
-                {
-                    puts("You Died.");
-                    return EXIT_SUCCESS;
-
-                }
-                else
-                {
-                    puts("You survived the trap");
-                }
-
-                break;
-			}
-			case 14:
-			{
-				puts("You enter room 14");
-                health--;
-				puts("");
-
-                break;
-			}
-
-            case 15:
+            case 10:
             {
                 puts("You have escaped");
                 return EXIT_SUCCESS;
