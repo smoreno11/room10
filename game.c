@@ -9,10 +9,15 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+bool trap_d10();
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
 	char name[30] = "bob";
+
+    // You drown after 5 failures
+    int health = 5;
 
 	srand(time(NULL));
 	
@@ -20,297 +25,186 @@ int main(int argc, char *argv[])
 	scanf("%s",name);
 
 	printf("Hello %s welcome to the RPG Game!\n",name);
+    puts("You find yourself in a dark room and you are not sure how you got here.");
+    puts("As you look around you see the room has 20 doors, each labeled with a number.");
+    puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
 
 	while(choice != 99)
 	{
-		puts("You find yourself in a dark room and you are not sure how you got here.");
-		puts("As you look around you see the room has 55 doors, each labeled with a number.");
-		puts("The room starts filling with water and you must choose a door to open or you will likely drown. you may quit anytime by selecting option 99.");
-		puts("What door do you choose?");
-		scanf("%d",&choice);
+        printf("Health: %d\n", health);
+        if(health < 1)
+        {
+            choice = 98;
+        }
+        else
+        {
+            puts("What door do you choose?");
+            scanf("%d",&choice);
+        }
+
 
 		switch(choice)
 		{
 			case 1:
 			{
-				puts("room1");
-				break;
+				puts("You enter room 1");
+                health--;
+
+                puts("You enter a room filled with mirrors. The reflections show two splitting paths, one is illusions.");
+                puts("Do You take the left (0) or right path (1)");
+                scanf("%d",&choice);
+                if(choice != 0)
+                {
+                    puts("You have fallen on a stalactite and died.");
+                    return EXIT_SUCCESS;
+                }
+                else
+                {
+                    puts("You found the exit to the mirror room.");
+                }
+
+                break;
+
 			}
 			case 2:
 			{
-				puts("room2");
+				puts("You enter room 2");
+                health--;
+                puts("This room is a formerly lush garden");
 				break;
 			}
 			case 3:
 			{
-				puts("room3");
+				puts("You enter room 3");
+                health--;
+                puts(" You find a library with a book that contains hints on the safest door in the dark room");
+
+                puts("My presence known, yet hidden away.");
+                puts("I'm in your steps and in your dance,");
+                puts("In cosmic spins, I take my chance.");
+                puts("In silent clocks, I am mute.");
+
 				break;
 			}
 			case 4:
 			{
-				puts("room4");
+				puts("You enter room 4");
+                health--;
+				puts("");
+
 				break;
 			}
 			case 5:
 			{
-				puts("room5");
+				puts("You enter room 5");
+                health--;
+
+                bool survived = trap_d10();
+                if(!survived)
+                {
+                    puts("You Died.");
+                    // return EXIT_SUCCESS;
+
+                }
+                else
+                {
+                    puts("You survived the trap");
+                }
+
 				break;
 			}
 			case 6:
 			{
-				puts("room6");
-				break;
+				puts("You enter room 6");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 7:
 			{
-				puts("room7");
-				break;
+				puts("You enter room 7");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 8:
 			{
-				puts("room8");
-				break;
+				puts("You enter room 8");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 9:
 			{
-				puts("room9");
-				break;
+				puts("You enter room 9");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 10:
 			{
-				puts("room10");
-				break;
+				puts("You enter room10");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 11:
 			{
-				puts("room11");
-				break;
+				puts("You enter room 11");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 12:
 			{
-				puts("room12");
-				break;
+				puts("You enter room 12");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 13:
 			{
-				puts("room13");
-				break;
+				puts("You enter room 13");
+                health--;
+				puts("");
+
+                break;
 			}
 			case 14:
 			{
-				puts("room14");
-				break;
-			}
-			case 15:
-			{
-				puts("room15");
-				break;
-			}
-			case 16:
-			{
-				puts("room16");
-				break;
-			}
-			case 17:
-			{
-				puts("room17");
-				break;
-			}
-			case 18:
-			{
-				puts("room18");
-				break;
-			}
-			case 19:
-			{
-				puts("room19");
-				break;
-			}
-			case 20:
-			{
-				puts("room20");
-				break;
-			}
-			case 21:
-			{
-				puts("room21");
-				break;
-			}
-			case 22:
-			{
-				puts("room22");
-				break;
-			}
-			case 23:
-			{
-				puts("room23");
-				break;
-			}
-			case 24:
-			{
-				puts("room24");
-				break;
-			}
-			case 25:
-			{
-				puts("room25");
-				break;
-			}
-			case 26:
-			{
-				puts("room26");
-				break;
-			}
-			case 27:
-			{
-				puts("room27");
-				break;
-			}
-			case 28:
-			{
-				puts("room28");
-				break;
+				puts("You enter room 14");
+                health--;
+				puts("");
+
+                break;
 			}
 
-			case 29:
-			{
-				puts("room29");
-				break;
-			}
-			case 30:
-			{
-				puts("room30");
-				break;
-			}
-			case 31:
-			{
-				puts("room31");
-				break;
-			}
-			case 32:
-			{
-				puts("room32");
-				break;
-			}
+            case 15:
+            {
+                puts("You have escaped");
+                return EXIT_SUCCESS;
+            }
 
-			case 33:
-			{
-				puts("room33");
-				break;
-			}
-			case 34:
-			{
-				puts("room35");
-				break;
-			}
+            case 98:
+            {
+                puts("Game Over");
+                puts("You have drowned!");
+                return EXIT_SUCCESS;
 
-			case 36:
-			{
-				puts("room36");
-				break;
-			}
+            }
 
-			case 37:
-			{
-				puts("room37");
-				break;
-			}
+            case 99:
+            {
+                puts("You decided to quit the game.");
+            }
 
-			case 38:
-			{
-				puts("room38");
-				break;
-			}
-			case 39:
-			{
-				puts("room39");
-				break;
-			}
-			case 40:
-			{
-				puts("room40");
-				break;
-			}
-			case 41:
-			{
-				puts("room41");
-				break;
-			}
-			case 42:
-			{
-				puts("room42");
-				break;
-			}
-			case 43:
-			{
-				puts("room43");
-				break;
-			}
-			case 44:
-			{
-				puts("room44");
-				break;
-			}
-			case 45:
-			{
-				puts("room45");
-				break;
-			}
-			case 46:
-			{
-				puts("room46");
-				break;
-			}
-			case 47:
-			{
-				puts("room47");
-				break;
-			}
-			case 48:
-			{
-				puts("room48");
-				break;
-			}
-			case 49:
-			{
-				puts("room49");
-				break;
-			}
-			case 50:
-			{
-				puts("room50");
-				break;
-			}
-			case 51:
-			{
-				puts("room51");
-				break;
-			}
-			case 52:
-			{
-				puts("room52");
-				break;
-			}
-			case 53:
-			{
-				puts("room53");
-				break;
-			}
-			case 54:
-			{
-				puts("room54");
-				break;
-			}
-			case 55:
-			{
-				puts("room55");
-				break;
-			}
-			case 99:
-			{
-				puts("You have escaped");
-				break;
-			}
 			default:
 			{
 				puts("invalid choice");
@@ -321,7 +215,36 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
+bool trap_d10()
+{
+    int roll = rand() % 10 + 1;
+    char *traps[] =
+        {
+        "A series of hidden blades swing down from the ceiling when you crossed a tripwire.",
+        "A tripwire triggers a barrage of darts shooting from the walls.",
+        "A weighted net drops from above, aiming to entangle and immobilize its victims.",
+        "A pressure plates on the floor activate a volley of arrows shooting from hidden wall compartments.",
+        "A disguised pit trap opens beneath you, with a false bottom concealing a second, deeper pit.",
+        "A mechanical claw trap grabs at you, attempting to pull you into a spiked pit.",
+        "A floor tile that, when stepped on, triggers a scything blade to sweep across the corridor.",
+        "A heavy stone block drops from the ceiling when you stepped on a floor tile.",
+        "An illusory floor hides a portal to a pocket dimension filled with toxic gas.",
+        "A spring-loaded trapdoor flips you into a chute lined with razor-sharp edges.",
+        "A deceptive doorway rigged with a guillotine blade that drops when the door is opened."
+        };
 
+    printf("%s \n", traps[roll]);
+    int d2 = rand() % 2+1;
+
+    if(d2 == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
 
 
 
