@@ -1,6 +1,9 @@
 //contributors
-//
+
 //Dom I.
+
+//Elias Dawarpana
+
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -19,6 +22,8 @@ void blackJack();
 int cardPull();
 void rollTheDice_Highest();
 void rollTheDice_Race();
+
+void FinalArea(int level);
 
 int main(int argc, char *argv[])
 {
@@ -104,8 +109,42 @@ int main(int argc, char *argv[])
 			}
 			case 13:
 			{
-				puts("room13");
-				break;
+				printf("Welcome to room 13!\n");
+				printf("The room of The Evil Future...\n");
+				printf("Dear Player, the goal of this room is to make it back to the present!\n");
+				printf("Select a road to follow and make your way back to the present...\nRoad 1: Shadowed Alley\nRoad 2: Desolation Boulevard\nRoad 3: Abyssal Passage\nRoad 4: Echoing Ruins Route\nRoad 5: Darkened Pathway\nPlease type in the number of the Road:");
+				int x = 0;
+				int w = 0;
+				srand(time(NULL));
+				int rNum = rand() % 10;
+				int levels[] = 
+				{
+					1, 2, 3, 4, 5, 6, 7, 8, 9, 10
+				};
+				scanf("%d", &x);
+				while (x != 4)
+				{
+					if (x == 1)
+					{
+						printf("\nYou walked down the Shadowed Alley and came across a dysfunctional robot that warps you to a jail cell...\nPlease Try again!\n\n");
+					}
+					else if (x == 2)
+					{
+						printf("\nYou reached the Desolation Boulevard and see a hologram of a pile of money, as you walk to grab it a robot grabs you and arrests you for illegal time travel...\nPlease try again!\n\n");
+					}
+					else if (x == 3)
+					{
+						printf("\nYou reached the Abyssal Passage, you come across an AI powered time machine, it asks you to place your fingerprint in the reader, it warps you back in time to the start area...\nPlease try again!\n\n");
+					}
+					else if (x == 5)
+					{
+						printf("\nYou reached the Dark Pathway, an area with no robot, as you make your way through the pathway you see a few aliens building something and they chase you away back to the starting area.\nPlease try again!\n\n");
+					}
+					printf("\nYou are back to the starting area, Select a road to follow and make your way back to the present...\nRoad 1: Shadowed Alley\nRoad 2: Desolation Boulevard\nRoad 3: Abyssal Passage\nRoad 4Echoing Ruins Route\nRoad 5: Darkened Pathway\nPlease type in the number of the Road:");
+					scanf("%d", &x);
+				}
+				FinalArea(levels[rNum]);
+          	break;
 			}
 			case 14:
 			{
@@ -393,7 +432,14 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-
+void FinalArea(int level)
+{
+   printf("\nYou have made it through the Echoing Ruins Route, you come across a giant Robot Guard Monster that is guarding a fully functioning time machine, as you go to approach it, the robot awakens and says: INTRUDER!!!\n\nYou are given a holographic weapon menu that will spit out a ray gun weapon...\n");
+   printf("The screen spins from a few levels and then reads: 'You have received the: Level %d ray gun!'\n", level);
+   printf("As you grab the weapon the giant Robot Guard tries to attack you and you use The level %d ray gun to destroy the robot!\n", level);
+   printf("You make your way to the time machine, panting heavily and set the date to the day you were in front of all the rooms...\nYou made it back!\n\nROOM CLEAR!\n\n");
+   return;
+}
 
 
 
