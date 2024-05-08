@@ -77,12 +77,12 @@ int main(int argc, char *argv[])
 			{
 				puts("You enter room 3");
                 health--;
-                puts(" You find a library with a book that contains hints on the safest door in the dark room");
+                puts(" You find a library with a book that contains hints on the exit door in the dark room");
 
-                puts("My presence known, yet hidden away.");
-                puts("I'm in your steps and in your dance,");
-                puts("In cosmic spins, I take my chance.");
-                puts("In silent clocks, I am mute.");
+                puts("I am a two-digit number whose second digit is the first.");
+                puts("Half of my double is certainly not the worst.");
+                puts("In binary, I'm a perfect score,");
+                puts("What number am I?");
 
 				break;
 			}
@@ -189,7 +189,6 @@ int main(int argc, char *argv[])
                 {
                     puts("You Died.");
                     return EXIT_SUCCESS;
-
                 }
                 else
                 {
