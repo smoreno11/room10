@@ -1,5 +1,6 @@
 //contributors
 //
+//Dom I.
 
 #include <stdlib.h>
 #include <ctype.h>
