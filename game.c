@@ -9,6 +9,8 @@
 #include <stdbool.h>
 #include <unistd.h>
 
+char* pullLever(int seed);
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -223,8 +225,55 @@ int main(int argc, char *argv[])
 			}
 			case 39:
 			{
-				puts("room39");
-				break;
+				int seed = rand();
+				char items[5][15] = {"nothing", "a sword", "a potion", "a skeleton", "a helmet"};
+
+				puts("You enter the room and are presented with 5 choices");
+				puts("1. There is chest which may contain valuables");
+				puts("2. There is a crack in the wall that looks big enough to squeeze through");
+				puts("3. There is another door which could lead anywhere");
+				puts("4. There is a dark hallway that may have an exit");
+				puts("5. There is a lever that seems to be attached to nothing");
+				puts("\nWhich option do you choose?");
+				scanf("%d", &choice);
+				switch(choice)
+				{
+					case 1:
+					{
+						printf("\nYou open the chest and find %s then return to the main room\n\n", items[seed % 5]);
+						break;
+					}
+					case 2:
+					{
+						printf("\nYou crawl into the crack and realize that its a dead end and turn back\n\n");
+						break;
+					}
+					case 3:
+					{
+						printf("\nYou try to open the door but its locked. You go back to the last room\n\n");
+						break;
+					}
+					case 4:
+					{
+						char previous[10] = "right";
+						char current[10] = "right";
+						while(strcmp(previous, "right") == 0 || strcmp(current, "right") == 0)
+						{
+							strcpy(previous, current);
+							printf("\nYou can go left or right, what do you choose\n");
+							scanf("%s", current);
+						}
+						printf("\nYou finally reach an exit and it leads back to the main room\n\n");
+						break;
+					}
+					case 5:
+					{
+						printf("\nYou pull the lever and %s", pullLever(seed));
+						break;
+					}
+				}
+
+				break;															
 			}
 			case 40:
 			{
@@ -321,7 +370,19 @@ int main(int argc, char *argv[])
 	return EXIT_SUCCESS;
 }
 
-
+char* pullLever(int seed)
+{
+	char* result;
+	if(seed % 2 == 0)
+	{
+		result = "nothing happens\n\n";
+	}
+	else
+	{
+		result = "a large stone moves out of the way revealing a pile of gold.\nYou fill your pockets and return to the main room.\n\n";
+	}
+	return result;
+}
 
 
 
