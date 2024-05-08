@@ -28,6 +28,8 @@ void rollTheDice_Race();
 void FinalArea(int level);
 bool trap_d10();
 
+void diegoFunction();
+
 int main(int argc, char *argv[])
 {
 	int choice = 0;
@@ -323,7 +325,101 @@ int main(int argc, char *argv[])
 			}
 			case 46:
 			{
-				puts("room46");
+			    //Diego Espinzoa
+			    int choice2 = 0;
+				//puts("room46");
+				puts("\nYou enter room 46 to find 5 more doors inside.");
+				puts("A metal bar door drops behind you and you are stuck inside room 46.");
+				puts("The water filling the previous room starts filling room 46 and you must quickly \nchoose a door.");
+				puts("What door do you choose?");
+				scanf("%d",&choice2);
+				switch(choice2)
+				{
+				    case 1:
+				    {
+				        puts("\nYou enter room 1 and a metal bar door drops behind you.");
+				        puts("There is text written on one of the walls of the room.");
+				        puts("The text says 'choose a number between 1 and 9'.");
+				        puts("'There is one right number and one wrong number'");
+				        puts("'If you choose the right number, you go free'");
+				        puts("'If you choose the wrong number you lose'");
+				        puts("'Keep choosing a number until you pick the right or wrong one'\n");
+				        
+				        diegoFunction();
+				        break;
+				    }
+				    case 2:
+				    {
+				        int choices[] = {2, 1, 4, 3};
+				        puts("\nYou enter room 2 and a metal bar door drops behind you.");
+				        puts("There is text written on one of the walls of the room.");
+				        puts("The text says 'choose the number in the 2 index spot of the array'.");
+				        for(int i = 0; i < 4;i++)
+                        printf("%d ", choices[i]);
+                        puts("\nWhat number do you choose?");
+                        int chose;
+                        scanf("%d",&chose);
+                        if (chose == choices[2])
+                        {
+                            puts("\nText magically apears on the wall.");
+                            puts("'You chose the right number.'");
+                            puts("You have escaped\n");
+                        }
+                        else
+                        {
+                            puts("\nText magically apears on the wall.");
+                            puts("'You chose the wrong number.'");
+                            puts("game over\n");
+				        }
+				        break;
+				    }
+				    case 3:
+				    {
+				        puts("\nYou enter room 3 and a metal bar door drops behind you.");
+				        puts("There is text written on one of the walls of the room.");
+				        puts("The text says 'What color is space?'.");
+				        puts("What is your answer?");
+				        char answer[10];
+				        scanf("%s",answer);
+				        for(int i = 0; answer[i]; i++)
+				        {
+                            answer[i] = tolower(answer[i]);
+                        }
+                        if (strcmp(answer, "black") == 0)
+                        {
+                            puts("\nTest magically apears on the wall.");
+                            puts("'Answer is correct'");
+                            puts("You have escaped\n");
+                        }
+                        else
+                        {
+                            puts("\nText magically apears on the wall.");
+                            puts("'Wrong answer'.");
+                            puts("game over\n");
+                        }
+				        break;
+				    }
+				    case 4:
+				    {
+				        puts("\nYou enter room 4 and a metal bar door drops behind you.\n");
+				        puts("You hear a voice say,");
+				        puts("'You chose the right door'.");
+				        puts("You have escaped\n");
+				        break;
+				    }
+				    case 5:
+				    {
+				        puts("\nYou enter room 5 and a metal bar door drops behind you.\n");
+				        puts("You hear a voice say,");
+				        puts("'You chose the wrong door'.");
+				        puts("game over\n");
+				        break;
+				    }
+				    default:
+		    	    {
+				        puts("invalid choice");
+			        }
+				}
 				break;
 			}
 			case 47:
@@ -1040,15 +1136,45 @@ bool trap_d10()
     return d2;
 }
 
-
-
-
-
-
-
-
-
-
-
+void diegoFunction()
+{
+    srand(time(NULL)); 
+    int right = rand()%9 +1;
+    int wrong = rand()%9 +1;
+    int guess = 0;
+    while (right == wrong)
+    {
+        wrong = wrong + rand()%3 +(-1);
+        if (wrong == 0)
+        {
+            wrong++;
+        }
+        else if(wrong==10)
+        {
+            wrong--;
+        }
+    }
+    
+    puts("Choose a number between 1-9");
+    scanf("%d",&guess);
+    while (guess != right && guess != wrong)
+    {
+        puts("Nothing happens, choose again");
+        scanf("%d",&guess);
+    }
+    
+    if(guess == right)
+    {
+        puts("\nText magically apears on the wall.");
+        puts("'You chose the right number.'");
+        puts("You have escaped\n");
+    }
+    else
+    {
+        puts("\nText magically apears on the wall.");
+        puts("'You chose the wrong number'.");
+        puts("game over\n");
+    }
+}
 
 
