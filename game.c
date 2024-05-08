@@ -4,6 +4,8 @@
 
 //Elias Dawarpana
 
+//Patrick Polanco
+
 
 #include <stdlib.h>
 #include <ctype.h>
