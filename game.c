@@ -1,7 +1,7 @@
 //contributors
 
 //Dom I.
-
+//Andre J Leos
 //Elias Dawarpana
 
 
@@ -13,7 +13,7 @@
 #include <stdbool.h>
 #include <unistd.h>
 #include <math.h>
-
+void ajlSpace();      
 void coinFlip();
 void JanKenPon();
 void drawStraws();
@@ -944,10 +944,11 @@ int main(int argc, char *argv[])
 
 
 
-
-
-
-
+void ajlSpace()
+{
+    while (getchar() != '\n')
+        ;
+}
 
 void coinFlip() {
   int call = 0;
