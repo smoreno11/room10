@@ -24,6 +24,7 @@ void rollTheDice_Highest();
 void rollTheDice_Race();
 
 void FinalArea(int level);
+bool trap_d10();
 
 int main(int argc, char *argv[])
 {
@@ -225,7 +226,19 @@ int main(int argc, char *argv[])
 			case 29:
 			{
 				puts("room29");
-				break;
+                bool survived = trap_d10();
+                if(!survived)
+                {
+                    puts("You Died.");
+                    return EXIT_SUCCESS;
+
+                }
+                else
+                {
+                    puts("You escaped the trap unharmed.");
+                }
+
+                break;
 			}
 			case 30:
 			{
@@ -997,6 +1010,33 @@ void rollTheDice_Race(){
   
 }
 
+bool trap_d10()
+{
+    // Rolls the array for a trap
+    int roll = rand() % 10 + 1;
+
+    char *traps[] =
+            {
+                    "A series of hidden blades swing down from the ceiling when you crossed a tripwire.",
+                    "A tripwire triggers a barrage of darts shooting from the walls.",
+                    "A weighted net drops from above, aiming to entangle and immobilize its victims.",
+                    "A pressure plates on the floor activate a volley of arrows shooting from hidden wall compartments.",
+                    "A disguised pit trap opens beneath you, with a false bottom concealing a second, deeper pit.",
+                    "A mechanical claw trap grabs at you, attempting to pull you into a spiked pit.",
+                    "A floor tile that, when stepped on, triggers a scything blade to sweep across the corridor.",
+                    "A heavy stone block drops from the ceiling when you stepped on a floor tile.",
+                    "An illusory floor hides a portal to a pocket dimension filled with toxic gas.",
+                    "A spring-loaded trapdoor flips you into a chute lined with razor-sharp edges.",
+                    "A deceptive doorway rigged with a guillotine blade that drops when the door is opened."
+            };
+
+    // Prints the rolled trap
+    printf("%s \n", traps[roll]);
+
+    // Generates a boolean for weather or not the player fell in a trap
+    bool d2 = rand() % 2;
+    return d2;
+}
 
 
 
