@@ -1,5 +1,6 @@
 //contributors
-//
+// Patrick Polanco
+// CSC 321
 
 #include <stdlib.h>
 #include <ctype.h>
