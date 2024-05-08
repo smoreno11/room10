@@ -500,22 +500,7 @@ void FinalArea(int level)
 
 
 
-void randomTreasure()
-{
-int treasure = rand() % 100 + 1;
-if(treasure ==100)
-{
-puts("You found 1 billion gold coins.");
-}
-else if(treasure > 50)
-{
-puts("You found 1 gold coin.");
-}
-else
-{
-puts("You found nothing.");
-}
-}
+
 
 
 
@@ -1095,7 +1080,22 @@ bool trap_d10()
 
 
 
-
+void randomTreasure()
+{
+int treasure = rand() % 100 + 1;
+if(treasure ==100)
+{
+puts("You found 1 billion gold coins.");
+}
+else if(treasure > 50)
+{
+puts("You found 1 gold coin.");
+}
+else
+{
+puts("You found nothing.");
+}
+}
 
 
 
