@@ -152,6 +152,114 @@ int main(int argc, char *argv[])
 			case 14:
 			{
 				puts("room14");
+
+
+
+	void printIntroduction() 
+{
+    printf("Welcome to the Enchanted Forest Adventure!\n");
+    printf("You have entered a mystical realm filled with wonder and magic.\n");
+    printf("What path will you choose?\n");
+}
+int main() {
+    srand(time(NULL));
+  int choice;
+    int gameOver = 0;
+
+    printIntroduction();
+
+    while (!gameOver)
+    {
+        printf("\nWhat would you like to do?\n");
+        printf("1. Explore the forest\n");
+        printf("2. Search for treasure\n");
+        printf("3. Follow the sound of running water\n");
+        printf("4. Rest for the night\n");
+        printf("5. Exit the enchanted forest\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+            case 1:
+            {
+                printf("You decide to explore the forest further.\n");
+                int randomEvent = rand() % 3;
+                if (randomEvent == 0)
+                {
+                    printf("You come across a friendly woodland creature who guides you to a hidden path.\n");
+                } else if (randomEvent == 1)
+                {
+                    printf("You stumble upon a trap set by a group of bandits! You narrowly escape with your life.\n");
+                }
+                else
+                {
+                    printf("You wander aimlessly through the thick foliage, eventually finding yourself back where you started.\n");
+                }
+                break;
+            }
+            case 2:
+            {
+                printf("You begin searching for treasure in the enchanted forest.\n");
+                int foundTreasure = 0;
+                int treasureLocations[3] = {1, 3, 5};
+                for (int i = 0; i < 3; i++)
+                {
+                    int location = rand() % 6 + 1;
+                    if (location == treasureLocations[i])
+                    {
+                        printf("You found a treasure chest containing ancient relics!\n");
+                        foundTreasure = 1;
+                        break;
+                    }
+                }
+                if (!foundTreasure)
+                {
+                    printf("Unfortunately, you did not find any treasure.\n");
+                }
+                break;
+            }
+            case 3:
+            {
+                printf("You follow the sound of running water and come across a beautiful waterfall.\n");
+                printf("Would you like to swim in the crystal-clear pool? (y/n) ");
+                char swimChoice;
+                scanf(" %c", &swimChoice);
+                if (swimChoice == 'y' || swimChoice == 'Y')
+                {
+                    printf("You dive into the refreshing pool and emerge feeling rejuvenated.\n");
+                }
+                else
+                {
+                    printf("You decide against swimming and continue on your way.\n");
+                }
+                break;
+            }
+            case 4:
+            {
+                printf("You find a cozy spot to rest for the night.\n");
+                printf("You wake up feeling well-rested and ready for another adventure.\n");
+                break;
+            }
+            case 5:
+            {
+                printf("You have decided to exit the enchanted forest.\n");
+                printf("Thank you for playing! Come back soon for more adventures.\n");
+                gameOver = 1;
+                break;
+            }
+            default:
+            {
+                printf("Invalid choice. Please try again.\n");
+                break;
+            }
+        }
+    }
+
+    return 0;
+}
+
+
 				break;
 			}
 			case 15:
