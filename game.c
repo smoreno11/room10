@@ -98,6 +98,7 @@ int main(int argc, char *argv[])
                 {
                     puts("This is an enchanted painting casts a paralyzing gaze on anyone who looks at it.");
                     puts("You are now paralyzed.");
+                    puts("Game Over");
                     return EXIT_SUCCESS;
                 }
 
@@ -134,6 +135,7 @@ int main(int argc, char *argv[])
 				puts("You enter a room filled with sand and five ancient ruins on the walls.");
                 puts("The door closes behind you and the room fills with quicksand. The runes start to glow.");
 
+                int death = 0;
                 for (int i = 0; i < 4; i++)
                 {
                     puts("Which rune do you touch? (1-5)");
@@ -147,7 +149,16 @@ int main(int argc, char *argv[])
                     else
                     {
                         puts("That did nothing.");
+                        death++;
                     }
+
+                if(death == 4)
+                {
+                    puts("You suffocated in the sand.");
+                    puts("Game Over");
+                    return EXIT_SUCCESS;
+                }
+
                 }
 
                 break;
