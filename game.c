@@ -8,6 +8,16 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
+#include <math.h>
+
+void coinFlip();
+void JanKenPon();
+void drawStraws();
+void numberGuess();
+void blackJack();
+int cardPull();
+void rollTheDice_Highest();
+void rollTheDice_Race();
 
 int main(int argc, char *argv[])
 {
@@ -284,6 +294,67 @@ int main(int argc, char *argv[])
 			case 51:
 			{
 				puts("room51");
+				srand(time(NULL));
+				int game = 0;
+				
+				printf("You and your party meet a silent apparition, and through a voice in the room, gestures to play a game.\n");
+				printf("Which game do you play to beat the figure? [Type the number of the game you want to play]\n");
+				printf("-------------------\n");
+				printf("{1} Coin Flip\n");
+				printf("{2} Rock Paper Scissors\n");
+				printf("{3} Draw straws\n");
+				printf("{4} Guess the number\n");
+				printf("{5} Black Jack\n");
+				printf("{6} Roll the dice\n");
+				
+				scanf("%d", &game);
+				
+				while (game < 1 || game > 7) {
+					
+					if (game < 1 || game > 7){
+						printf("Game number out of range. Enter another number.\n");
+						scanf("%d", &game);
+					}
+					
+				}
+
+				printf("\n");
+
+				if (game == 1) {
+					coinFlip();
+				}
+				else if (game == 2) {
+					JanKenPon();
+				}
+				else if (game == 3) {
+					drawStraws();
+				}
+				else if (game == 4){
+					numberGuess();
+				}
+				else if (game == 5){
+					blackJack();
+				}
+				else if (game == 6){
+					int diceGame = 0;
+					printf("Which type of dice game do you wish to play?\n");
+					printf("Enter {1} for 'Highest Number'\n");
+					printf("Enter a different one for 'Reach the Number'\n");
+					scanf("%d", &diceGame);
+
+					if (diceGame == 1) {
+						rollTheDice_Highest();
+					}
+					else {
+						rollTheDice_Race();
+					}
+				}
+				printf("\n");
+				printf("The appartion begins laughing, and you brace fearing what trick is next. \n");
+				printf("The laughing turns out to be a ruse of amusement; a sound of delight. \n");
+				printf("It waves, thanking you for taking the time out of your way to play a game with it. \n");
+				printf("As you leave, it whines, and begins to follow you out of the room. \n");
+				printf("Your party is now plus one! Who knows what other fateful encounters await! \n");
 				break;
 			}
 			case 52:
@@ -354,7 +425,530 @@ int main(int argc, char *argv[])
 
 
 
+void coinFlip() {
+  int call = 0;
 
+  printf("You know how this one goes: call heads{1} or tails{2}: ");
+  scanf("%d", &call);
+    
+  if (call == 1 || call == 2) {
+    printf("The coin flips!\n");
+    
+  }
+  else {
+    printf("You call an invalid number, so your opponent calls instead!\n");
+    call = (rand() % 2) + 1;
+    
+    if (call == 1){
+      printf("Your opponent calls tails!\n");
+    }
+    else {
+      printf("Your opponent calls heads!\n");
+    }
+  }
+
+    int coin = (rand() % 2) + 1;
+
+  if (coin == 1 && call == 1) {
+    printf("It's heads! Right on the dime!\n");
+  }
+  else if (coin == 1 && call == 2) {
+    printf("It's heads. Maybe call better shots for a change.\n");
+  }
+  else if (coin == 2 && call == 1) {
+    printf("It's tails. Can't make cents out of it? Too bad!\n");
+  }
+  else if (coin == 2 && call == 2) {
+    printf("It's tails! You're cool as mint!\n");
+  }
+  
+}
+void JanKenPon() {
+  int rps1 = 0;
+  
+  printf("Roshambeau! Call Rock{1} Paper{2} or Scissors{3}: \n");
+  scanf("%d", &rps1);
+
+  while (rps1 < 1 || rps1 > 3) {
+    printf("You can't call 'Laser Gun.' Pick a valid option. \n");
+    scanf("%d", &rps1);
+  }
+
+  int rps2 = (rand() % 3) + 1;
+
+  if (rps1 == 1) {
+    printf("You throw out Rock, ");
+
+    if (rps2 == 1) {
+      printf("but so does your opponent! Maybe make it up with a Fist-Bump? \n");
+    }
+    if (rps2 == 2) {
+      printf("but your opponent throws Paper! It's got you covered! \n");
+    }
+    if (rps2 == 3) {
+      printf("and destroy your opponent's Scissors! What a smashing good time! \n");
+    }
+  }
+  else if (rps1 == 2) {
+    printf("You throw out Paper, ");
+
+    if (rps2 == 1) {
+      printf("and cover your opponent's rock! Your foe really took that one for granite! \n");
+    }
+    if (rps2 == 2) {
+      printf("but so does your opponent! No one's write, so it's a draw! \n");
+    }
+    if (rps2 == 3) {
+      printf("but it's cut by Scissors! How tear-able! \n");
+    }
+  }
+  else if (rps1 == 3) {
+    printf("You throw out Scissors, ");
+
+    if (rps2 == 1) {
+      printf("but it's crushed by a Rock! Not a very sharp idea. \n");
+    }
+    if (rps2 == 2) {
+      printf("and you slash your opponent's Paper! Now you're a cut above! \n");
+    }
+    if (rps2 == 3) {
+      printf("but so does your opponent! Lesson learned: don't run with Scissors. \n");
+    }
+    
+  }
+  
+  if (rps1 == rps2) {
+    printf("Try again since it's a tie? \n");
+    printf("[Enter {0} to try again] \n");
+    printf("[Type any other number to forfit] \n");
+    scanf("%d", &rps1);
+
+    if (rps1 == 0) {
+      printf("\n");
+      JanKenPon();
+    }
+  }
+  
+}
+void drawStraws() {
+  
+  int strawSet = 0;
+  int youStraw = 0;
+  int foeStraw = 0;
+
+  printf("Your traveling companion friend comes out acting as a referee, and takes out 3 straws.\n");
+  printf("From left to right there are straws labled 1-3.\n");
+  printf("Each straw has a unique length. Pick the longest straw to win.\n");
+
+  printf("Pick a numbered straw from 1-3: ");
+  scanf("%d", &youStraw);
+  printf("\n");
+
+  while (youStraw < 1 || youStraw > 3) {
+    printf("That straw is in Nowhere Land, pick a valid straw: ");
+    scanf("%d", &youStraw);
+    printf("\n");
+  }
+
+  foeStraw = (rand() % 2) + 1;
+
+  while (youStraw == foeStraw) {
+    foeStraw = (rand() % 2) + 1;
+  }
+
+  printf("|You: %d| |Foe: %d|\n", youStraw, foeStraw);
+
+  youStraw -= 1;
+  foeStraw -= 1;
+
+  printf("The lengths of the straws are now revealed: ");
+
+  strawSet = (rand() % 6) + 1;
+  
+  int straws[] = {0, 0, 0};
+  
+  if (strawSet == 1) {
+    straws[0] = 1;
+    straws[1] = 2;
+    straws[2] = 3;
+  }
+  else if (strawSet == 2) {
+    straws[0] = 2;
+    straws[1] = 1;
+    straws[2] = 3;
+  }
+  else if (strawSet == 3) {
+    straws[0] = 2;
+    straws[1] = 3;
+    straws[2] = 1;
+  }
+  else if (strawSet == 4) {
+    straws[0] = 1;
+    straws[1] = 3;
+    straws[2] = 2;
+  }
+  else if (strawSet == 5) {
+    straws[0] = 3;
+    straws[1] = 1;
+    straws[2] = 2;
+  }
+  else {
+    straws[0] = 3;
+    straws[1] = 2;
+    straws[2] = 1;
+  }
+  
+  printf("[%d] [%d] [%d]", straws[0], straws[1], straws[2]);
+  printf("\n");
+
+  int s1 = straws[youStraw];
+  int s2 = straws[foeStraw];
+
+  printf("|You: %d| |Foe: %d|\n", s1, s2);
+  printf("\n");
+
+  if (s1 > s2) {
+    printf("You got the longer straw! What victory drink would work best for it?\n");
+  }
+  else {
+    printf("The last straw, you've gotten. Disappointed, you are?\n");
+  }
+  
+}
+void numberGuess() {
+  int targetNo = rand() % 10;
+  int yourGuess = -1;
+  int foeGuess = -1;
+  
+  printf("Your traveling companion friend comes out acting as a referee and picks a number from 0-9. Closest number wins. \n");
+  printf("Write your number down, your opponent will do the same: ");
+  scanf("%d", &yourGuess);
+
+  do {
+    foeGuess = rand() % 10;
+  } while (foeGuess == yourGuess);
+
+  printf("The numbers are then revealed: ");
+  printf("|You = %d| |Foe = %d| |Target = %d|\n", yourGuess, foeGuess, targetNo);
+
+  if (abs(yourGuess - targetNo) < abs(foeGuess - targetNo)) {
+    printf("Your guess is ");
+
+    if (yourGuess == targetNo) {
+      printf("the same as the target! Spot on! \n");
+    }
+    else {
+      printf("closer! Nice forsight! \n");
+    }
+    
+  }
+  else if (abs(yourGuess - targetNo) > abs(foeGuess - targetNo)) {
+    printf("Your opponent");
+    
+    if (foeGuess == targetNo) {
+      printf(" guessed the number! That's gotta hurt! \n");
+    }
+    else {
+      printf("'s guess is closer. That sucks. \n");
+    }
+    
+  }
+  else {
+    printf("Both guesses are equally close, the game restarts. \n");
+    printf("\n");
+    numberGuess();
+  }
+  
+}
+void blackJack() {
+
+  int youTotal = 0;
+  int foeTotal = 0;
+  bool youStop = false;
+  bool foeStop = false;
+  
+  printf("You will first be given two cards dealt in front of you. \n");
+  printf("Through a series of Yes or No, the first one to 21 wins. \n");
+  printf("But DO NOT go over 21, or it's a bust. \n");
+  printf("Aces can be 1 or 11, and cannot appear in the starting hand.\n");
+  printf("\n");
+
+  printf("Your first two cards is are: ");
+
+  for (int i = 0; i < 2; i++) {
+    youTotal += cardPull(0);
+    printf(" ");
+  }
+
+  printf("= %d\n", youTotal);
+  
+  printf("Your foe's first two cards is are: ");
+
+  for (int i = 0; i < 2; i++) {
+    foeTotal += cardPull(0);
+    printf(" ");
+  }
+
+  printf("= %d\n", foeTotal);
+  
+  int hit = 0;
+
+  while ((youTotal < 21 && foeTotal < 21)) {
+
+    if (youStop == false) {
+      printf("\nDraw another card? Type '1' for yes, or another number to stop: ");
+      scanf("%d", &hit);
+    }
+    
+    if (hit == 1) {
+      printf("You draw a ");
+      youTotal += cardPull(1);
+      printf(" for a total of %d", youTotal);
+      printf("\n");
+    }
+    else {
+      printf("You stop at %d", youTotal);
+      printf("\n");
+      youStop = true;
+    }
+    
+    if (foeTotal < 17 && foeStop == false) {
+      printf("Your foe draws a ");
+      foeTotal += cardPull(0);
+      printf(" for a total of %d", foeTotal);
+      printf("\n");
+    }
+    else {
+      printf("Your foe stops at %d", foeTotal);
+      printf("\n");
+      foeStop = true;
+    }
+
+    if (youStop == true && foeStop == true) {
+      break;
+    }
+    
+  }
+
+  printf("\n");
+
+  if (youTotal > 21 && foeTotal > 21) {
+    printf("Double bust! Shameful.\n");
+  }
+  else if (foeTotal > 21) {
+    printf("You know who to call, your foe's been busted!\n");
+  }
+  else if (youTotal > 21) {
+    printf("You bust! Your foe triumphs!\n");
+  }
+  else {
+    if (abs(21 - youTotal) < abs(21 - foeTotal)) {
+      printf("You win! What a great deal!\n");
+    }
+    else if (abs(21 - youTotal) > abs(21 - foeTotal)) {
+      printf("You lose. You were not well suited for this.\n");
+    }
+    else {
+      printf("It's a draw! A luck of the draw!\n");
+    }
+  }
+  
+}
+int cardPull(int ace) {
+  int cardStack1[] = {2, 3, 4, 5, 6, 7, 8, 9, 10};
+  char cardStack2[] = {'J', 'K', 'Q', 'A'};
+  
+  int pull = 0;
+  int pullIndex = 0;
+  int chance = rand() % 13;
+
+  if (chance < 9) {
+    pullIndex = rand() % 9;
+    printf("%d", cardStack1[pullIndex]);
+    pull = cardStack1[pullIndex];
+  }
+  else {
+    
+    if (ace == 0) {
+      pullIndex = rand() % 3;
+      printf("%c", cardStack2[pullIndex]);
+      return 10;
+    }
+    
+    else {
+      pullIndex = rand() % 4;
+
+      if (pullIndex == 3) {
+        printf("Ace, (Type 1 or 11 for the value) ");
+        scanf("%d", &pull);
+
+        if (pull == 1) {
+          return 1;
+        }
+        else if (pull == 11) {
+          return 11;
+        }
+        else {
+          printf("(Invalid, defaulting to 1)");
+          return 1;
+        }
+      }
+      else {
+        printf("%c", cardStack2[pullIndex]);
+        return 10;
+      }
+      
+    }
+  }
+  return pull;
+}
+void rollTheDice_Highest() {
+  int p1 = 0;
+  int p2 = 0;
+
+  int diceOneTwelve[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+  int diceFourEight[] = {4, 5, 6, 7, 8};
+
+  printf("\n");
+  printf("This is a roll the dice game, but with a catch: \n");
+  printf("You can either pick a 1-12 dice block \n");
+  printf("OR you can pick a 4-8 dice block.\n");
+  printf("Both players are allowed to pick the same dice block.\n");
+  printf("You must roll the highest number to win. \n");
+  printf("\n");
+  printf("Do you pick the 1-12 dice {1} or the 4-8 dice {2}?\n");
+  scanf("%d", &p1);
+
+  p2 = (rand() % 2) + 1;
+
+  if (p1 == 1) {
+    printf("You roll the 1-12 dice block.\n");
+    p1 = diceOneTwelve[rand() % 12];
+    printf("The number is %d\n", p1);
+  }
+  else if (p1 == 2) {
+    printf("You roll the 4-8 dice block.\n");
+    p1 = diceFourEight[(rand() % 5)];
+    printf("The number is %d\n", p1);
+  }
+
+  if (p2 == 1) {
+    printf("Your foe rolls the 1-12 dice block.\n");
+    do {
+      p2 = diceOneTwelve[rand() % 12];
+    } while(p1 == p2);
+    printf("The number is %d\n", p2);
+  }
+  else if (p2 == 2) {
+    printf("Your foe rolls 4-8 dice block.\n");
+    do {
+      p2 = diceFourEight[(rand() % 5)];
+    } while(p1 == p2);
+    printf("The number is %d\n", p2);
+  }
+
+  if (p1 > p2) {
+    printf("You strike the higher number! You're on a roll! \n");
+  }
+  else {
+    printf("The die is cast, and it gives you the losing stink-eye.\n");
+  }
+  
+}
+void rollTheDice_Race(){
+  int p1 = 0;
+  int p2 = 0;
+  int p1Rolls = 0;
+  int p2Rolls = 0;
+  int p1Tally = 0;
+  int p2Tally = 0;
+  int targetRoll = (rand() % 20) + 31;
+
+  int diceOneTwelve[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+  int diceFourEight[] = {4, 5, 6, 7, 8};
+  
+  printf("\n");
+  printf("This is a roll the dice game, but with a catch: \n");
+  printf("You can either pick a 1-12 dice block \n");
+  printf("OR you can pick a 4-8 dice block.\n");
+  printf("Both players are allowed to pick the same dice block.\n");
+  printf("You must reach %d with the fewest rolls to win. \n", targetRoll);
+  printf("OR if both players go over, the closest total to %d wins. \n", targetRoll);
+  printf("\n");
+  printf("Do you pick the 1-12 dice {1} or the 4-8 dice {2}?\n");
+  scanf("%d", &p1);
+
+  p2 = (rand() % 2) + 1;
+
+  if (p1 == 1) {
+    printf("You begin to roll the 1-12 dice block.\n");
+    printf("The numbers are: ");
+    while (p1Tally < targetRoll) {
+      p1 = diceOneTwelve[rand() % 12];
+      p1Rolls += 1;
+      p1Tally += p1;
+      printf(" %d ", p1);
+    } 
+  }
+  else if (p1 == 2) {
+    printf("You begin to roll the 4-8 dice block.\n");
+    printf("The numbers are: ");
+    while (p1Tally < targetRoll) {
+      p1 = diceFourEight[(rand() % 5)];
+      p1Rolls += 1;
+      p1Tally += p1;
+      printf(" %d ", p1);
+    } 
+  }
+  
+  printf("= %d (%d Rolls)", p1Tally, p1Rolls);
+  printf("\n");
+
+  if (p2 == 1) {
+    printf("Your foe begins to roll the 1-12 dice block.\n");
+    printf("The numbers are: ");
+    while (p2Tally < targetRoll) {
+      p2 = diceOneTwelve[rand() % 12];
+      p2Rolls += 1;
+      p2Tally += p2;
+      printf(" %d ", p2);
+    }  
+  }
+  else if (p2 == 2) {
+    printf("Your foe begins to roll the 4-8 dice block.\n");
+    printf("The numbers are:");
+    while (p2Tally < targetRoll) {
+      p2 = diceFourEight[(rand() % 5)];
+      p2Rolls += 1;
+      p2Tally += p2;
+      printf(" %d ", p2);
+    }  
+  }
+
+  printf("= %d (%d Rolls)", p2Tally, p2Rolls);
+  printf("\n");
+
+  if (p1Rolls < p2Rolls) {
+    printf("You rolled less times than your opponent! What a feat!\n");
+  }
+  else if (p1Rolls > p2Rolls) {
+    printf("You have been out-cast by your opponent's dice. What a pity!\n");
+  }
+  else {
+    printf("The amount of rolls are the same, closest tally to the target wins...\n");
+    if (abs(p1Tally - targetRoll) > abs(p2Tally - targetRoll)) {
+      printf("You lose the tie-breaker!\n");
+    }
+    else if (abs(p1Tally - targetRoll) < abs(p2Tally - targetRoll)) {
+      printf("You win the tie-breaker!\n");
+    }
+    else {
+      printf("Both of you win the tie breaker! With odds like that, there's no need for a redo!\n");
+    }
+    
+  }
+  
+}
 
 
 
