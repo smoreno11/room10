@@ -6,6 +6,8 @@
 
 //Patrick Polanco
 
+// Andres Lara
+
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -27,6 +29,8 @@ void rollTheDice_Race();
 
 void FinalArea(int level);
 bool trap_d10();
+
+void fightSkeletons(int randomNumber);
 
 int main(int argc, char *argv[])
 {
@@ -294,6 +298,57 @@ int main(int argc, char *argv[])
 			case 40:
 			{
 				puts("room40");
+        int x = 0;
+				int y = 0;
+				int sips = 0;
+				int i;
+				int d20 = 0;
+				int alararnum = rand() % 21; // will give a random number in range 0-9
+
+				printf("While traveling at night travel and run into a dark forest\n");
+				printf("You have the following options:\n1. Turn around and try another door\n2. Go through the forest\n3. You see a nearby cave, you explore it\n");
+				printf("Enter your choice: \n");
+				scanf("%d", &x);
+
+				if (x == 1)
+				{
+					printf("Returning back to main room\n");
+				}
+				else if (x == 2)
+				{
+					printf("You trek into the forest and encounter a band of skeletons\n");
+					printf("Enter 1 to turn around and return to the main room, or 2 to roll d-20: \n");
+					scanf("%d", &y);
+					if (y == 1)
+					{
+						continue;
+					}
+					else if (y == 2)
+					{
+						fightSkeletons(alararnum);
+					}					
+				}
+				else if (x == 3)
+				{
+					printf("\nIn the cave, you  find some mead! Enter 1 to take a sip :) or enter 2 to return to the main room: \n");
+					scanf("%d", &y);
+					if (y == 1)
+					{
+						printf("\nEnter the number of sips you want to take!\n");
+						scanf("%d", &sips);
+						printf("First a small taste....\n");
+						for(i = 0; i < sips; i++)
+						{
+							printf("And another sip!\n");
+						}
+						printf("Okay that's enough . . . time to head back.\n");
+
+					}
+					else if (y == 2)
+					{
+						continue;
+					}
+				}
 				break;
 			}
 			case 41:
@@ -1038,6 +1093,18 @@ bool trap_d10()
     // Generates a boolean for weather or not the player fell in a trap
     bool d2 = rand() % 2;
     return d2;
+}
+
+void fightSkeletons(int randomNumber) {
+	if (randomNumber <= 12)
+	{
+		printf("You did not roll high enough and die, respawning in the main room\n");
+	}
+	else if (randomNumber > 12)
+	{
+		printf("You successfully defeated the skeletons! Returning to celebrate in the main room\n");
+	}
+	return;
 }
 
 
