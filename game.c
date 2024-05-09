@@ -5,7 +5,7 @@
 //Elias Dawarpana
 
 //Patrick Polanco
-
+//Kal M
 
 #include <stdlib.h>
 #include <ctype.h>
@@ -24,6 +24,7 @@ void blackJack();
 int cardPull();
 void rollTheDice_Highest();
 void rollTheDice_Race();
+void doorChoice();
 
 void FinalArea(int level);
 bool trap_d10();
@@ -93,6 +94,215 @@ int main(int argc, char *argv[])
 			case 9:
 			{
 				puts("room9");
+				int choice = 0;
+				char playerName[6];
+				srand(time(NULL));
+				    
+				printf("Please enter your player name: ");
+				scanf("%s", playerName);
+
+				printf("\nWelcome %s, to progress the story use the ENTER key during gameplay.\n", playerName);
+				doorChoice();
+				while(choice != 6)
+				{
+					puts("\nWhat path do you decide to choose?");
+					puts("|Door 1: Straight ahead|Door 2: Left|Door 3: Right|Door 4: Behind you|Door 5: Circular latched door|(6 will quit the game at any point)");
+					scanf("%d", &choice);
+					switch(choice)
+					{
+						case 1:
+							{
+								puts("\n|You decided to go straight ahead and enter Door 1|\n");
+								while(getchar() != '\n');
+
+								printf("Once inside, the door you entered from closes leaving you in an identical room.");
+								while(getchar() != '\n');
+
+								printf("The voice from before calls out and states You have unfortunately guessed incorrectly and will have to be culled from the experiment.");
+								while(getchar() != '\n');
+
+								printf("The floor below you begins to open up from the middle exposing a pool of lava.");
+								while(getchar() != '\n');
+
+								printf("Ultimately, you succumb to the lava and perish.");
+								while(getchar() != '\n');
+
+								break;
+							}
+						case 2:
+							{
+								puts("\n|You decided to go left and enter Door 2|\n");
+								while(getchar() != '\n');
+
+								printf("Once inside, the door you entered from closes leaving you in an identical room.");
+								while(getchar() != '\n');
+
+								printf("The voice from before calls out and states You have passed the first section of the experiment but must face an adversary to proceed.");
+								while(getchar() != '\n');
+
+								printf("The door in front of you opens up and reveals a black bear.");
+								while(getchar() != '\n');
+
+								printf("The voice declares that you must fight against the bear in order to proceed to the next room.");
+								while(getchar() != '\n');
+
+								printf("Ultimately, you succumb to the bear and perish.");
+								while(getchar() != '\n');
+
+								break;
+							}
+						case 3:
+							{
+								puts("\n|You decided to go right and enter Door 3|\n");
+								while(getchar() != '\n');
+
+								printf("Once inside, the door you entered from closes leaving you in an identical room.");
+								while(getchar() != '\n');
+
+								printf("You have a moment of silence with the voice seemingly gone.");
+								while(getchar() != '\n');
+
+								printf("Linear cracks start to form on all parts of the walls around the room with a red hue escaping the cracks");
+								while(getchar() != '\n');
+
+								printf("The voice continues its abscence but a siren begins to blare in the room.");
+								while(getchar() != '\n');
+
+								printf("Laser beams escape through every crack leaving no room to avoid them.");
+								while(getchar() != '\n');
+
+								printf("Ultimately, you succumb to the laser beams and perish.");
+								while(getchar() != '\n');
+
+								break;
+							}
+						case 4:
+							{
+								char *rewardChoice[] = { "|CHOICE 1: $10,000,000|", "|CHOICE 2: 1 of 1 specially crafted Porche|", "|CHOICE 3:Luxury villa of your own|", "|CHOICE 4:Small remote island ownership|", "|CHOICE 5:Connections with influential figures|" };
+								int prizeChoice = 0;
+								puts("\n|You decided to go behind and enter Door 4|\n");
+								while(getchar() != '\n');
+
+								printf("Once inside, the door you entered from closes leaving you in an identical room.");
+								while(getchar() != '\n');
+
+								printf("The voice congratulates you and exclaims that you have chosen the correct door.");
+								while(getchar() != '\n');
+
+								printf("A shift in the ceiling appears and down comes a giant digital screen extended by a robotic arm.");
+								while(getchar() != '\n');
+
+								printf("The Screen projects 5 options to choose from.");
+								while(getchar() != '\n');
+
+								printf("The Voice proceeds to explain that a rewards was guaranteed for signing up for the experiment.");
+								while(getchar() != '\n');
+
+								printf("you ask the voice of your whereabouts and how you ended up in such a situation in confusion aftering finding out you signed up for this.");
+								while(getchar() != '\n');
+
+								printf("The voice explains you signed away your life in exchange for being in an 'experiment' for a chance to win expensive prizes after completion.");
+								while(getchar() != '\n');
+
+								printf("your situation was dire and you believed this was your only chance to get out of the crippling debt you've accumulated.");
+								while(getchar() != '\n');
+
+								printf("The voice then urges you to pick a prize presented on the digital screen.\n");
+								while(getchar() != '\n');
+
+								for(int i = 0; i < 5; i++)
+								{
+									printf("%s\n", rewardChoice[i]);
+								}
+								puts("Please pick a reward for completion of the experiment: ");
+								scanf("%d", &prizeChoice);
+								switch(prizeChoice)
+								{
+									case 1:
+										{
+											puts("\nCongratulations you have chosen |CHOICE 1: $10,000,000|.");
+											while(getchar() != '\n');
+											puts("You may attempt again if you wish to do so to unlock the other endings if not you may quit by inputing 6 at the selection menu.");
+											while(getchar() != '\n');
+											break;
+										}
+									case 2:
+										{
+											puts("\nCongratulations you have chosen |CHOICE 2: 1 of 1 specially crafted Porche|.");
+											while(getchar() != '\n');
+											puts("You may attempt again if you wish to do so to unlock the other endings if not you may quit by inputing 6 at the selection menu.");
+											while(getchar() != '\n');
+											break;
+										}
+									case 3:
+										{
+											puts("\nCongratulations you have chosen |CHOICE 3:Luxury villa of your own|.");
+											while(getchar() != '\n');
+											puts("You may attempt again if you wish to do so to unlock the other endings if not you may quit by inputing 6 at the selection menu.");
+											while(getchar() != '\n');
+											break;
+										}
+									case 4:
+										{
+											puts("\nCongratulations you have chosen |CHOICE 4:Small remote island ownership|.");
+											while(getchar() != '\n');
+											puts("You may attempt again if you wish to do so to unlock the other endings if not you may quit by inputing 6 at the selection menu.");
+											while(getchar() != '\n');
+											break;
+										}
+									case 5:
+										{
+											puts("\nCongratulations you have chosen |CHOICE 5:Connections with influential figures|.");
+											while(getchar() != '\n');
+											puts("You may attempt again if you wish to do so to unlock the other endings if not you may quit by inputing 6 at the selection menu.");
+											while(getchar() != '\n');
+											break;
+										}
+								}
+								break;
+							}
+						case 5:
+							{
+								int r = rand() % 61;
+								puts("\n|You decided to go down and attempt to open Door 5|\n");
+								while(getchar() != '\n');
+
+								printf("The door below has 5 latches that need to be taken care of before proceeding.");
+								while(getchar() != '\n');
+
+								printf("You manage to get all the latches within %d seconds and fall down to a lower level.", r);
+								while(getchar() != '\n');
+
+								printf("Unlike the previous room, you land on a platform in the middle of the room surround by water.");
+								while(getchar() != '\n');
+
+								printf("The voice returns and exclaims that you have chosen an incorrect door and will unfortunately become feed for their pets.");
+								while(getchar() != '\n');
+
+								printf("The sound of heavy gates opening comes from beneath the water.");
+								while(getchar() != '\n');
+
+								printf("Dozens of crocodiles ascend from the depths and begin heading your direction.");
+								while(getchar() != '\n');
+
+								printf("Ultimately, you succumb to the crocodiles and perish.");
+								while(getchar() != '\n');
+
+								break;
+							}
+						case 6:
+							{
+								puts("You have decided to end the game.");
+								break;
+							}
+							           
+							 default:
+							{
+								puts("Invalid input entered.");
+							}
+					}
+				}
+				puts("Game End");
 				break;
 			}
 			case 10:
@@ -461,7 +671,14 @@ void FinalArea(int level)
 
 
 
-
+void doorChoice()
+{
+	    puts("you find yourself in a futuristic cubed room with one door on each side and a circular latched door below you.");
+	        puts("you have no recollection as to how you've ended up in such a predicament.");
+		    puts("Sudenly, a voice calls out notifying you that the experiment will start in 5...4...3...2...1");
+		        puts("Spikes emerge from circular holes in the ceiling, you have to decide on one of five doors in order to escape the death trap.");
+			    
+}
 
 
 
