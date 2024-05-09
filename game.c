@@ -6,6 +6,8 @@
 
 //Patrick Polanco
 
+//Jullian Alcaraz
+
 
 #include <stdlib.h>
 #include <ctype.h>
