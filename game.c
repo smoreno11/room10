@@ -1,5 +1,4 @@
 //contributors
-//Dedman
 //Dom I.
 //Andre J Leos
 //Elias Dawarpana
